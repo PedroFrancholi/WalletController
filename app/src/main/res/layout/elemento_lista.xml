@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvTipoElementoLista"
+        android:layout_width="44dp"
+        android:layout_height="43dp"
+        android:text="Tipo"
+        tools:text="tvTipo"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDataLanctoElementoLista"
+        android:layout_width="114dp"
+        android:layout_height="43dp"
+        android:text="Data"
+        tools:text="tvDataLancto"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTipoElementoLista"
+        app:layout_constraintStart_toEndOf="@+id/tvTipoElementoLista" />
+
+    <TextView
+        android:id="@+id/tvDetalheElementoLista"
+        android:layout_width="132dp"
+        android:layout_height="43dp"
+        android:text="Detalhe"
+        tools:text="tvDetalhe"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDataLanctoElementoLista"
+        app:layout_constraintStart_toEndOf="@+id/tvDataLanctoElementoLista" />
+
+    <TextView
+        android:id="@+id/tvValorElementoLista"
+        android:layout_width="98dp"
+        android:layout_height="44dp"
+        android:text="Valor"
+        tools:text="tvValor"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDetalheElementoLista"
+        app:layout_constraintStart_toEndOf="@+id/tvDetalheElementoLista" />
+</androidx.constraintlayout.widget.ConstraintLayout>
