@@ -3,14 +3,12 @@ package br.edu.utfpr.walletcontroller.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.database.Cursor
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.EditText
-import android.widget.Spinner
+import android.widget.TextView
 import br.edu.utfpr.walletcontroller.R
 import br.edu.utfpr.walletcontroller.database.DataBaseHandler
 import br.edu.utfpr.walletcontroller.entity.Carteira
@@ -24,11 +22,11 @@ class Adapter(var context:Context, var cursor: Cursor) : BaseAdapter(){
         cursor.moveToPosition(pos)
 
         val carteira = Carteira(
-            cursor.getInt(DataBaseHandler.ID),
-            cursor.getString(DataBaseHandler.TIPO),
-            cursor.getString(DataBaseHandler.DETALHE),
-            cursor.getDouble(DataBaseHandler.VALOR),
-            cursor.getString(DataBaseHandler.DATALANCTO)
+            cursor.getInt(cursor.getColumnIndexOrThrow("_id")),
+            cursor.getString(cursor.getColumnIndexOrThrow("tipo")),
+            cursor.getString(cursor.getColumnIndexOrThrow("detalhe")),
+            cursor.getDouble(cursor.getColumnIndexOrThrow("valor")),
+            cursor.getString(cursor.getColumnIndexOrThrow("datalancto"))
         )
         return carteira
     }
@@ -44,17 +42,27 @@ class Adapter(var context:Context, var cursor: Cursor) : BaseAdapter(){
 
         val elementoLista = inflater.inflate(R.layout.elemento_lista, null)
 
-        val spTipo = elementoLista.findViewById<Spinner>(R.id.spTipo)
-        val spDetalhe = elementoLista.findViewById<Spinner>(R.id.spDetalhe)
-        val etValor = elementoLista.findViewById<EditText>(R.id.etValor)
-        val dpDataLancto = elementoLista.findViewById<DatePicker>(R.id.dpDataLancto)
-        val btLancar = elementoLista.findViewById<Button>(R.id.btLancar)
-        val btListar = elementoLista.findViewById<Button>(R.id.btListar)
-        val btSaldo= elementoLista.findViewById<Button>(R.id.btSaldo)
+        val tvTipo = elementoLista.findViewById<TextView>(R.id.tvTipoElementoLista)
+        val tvDetalhe = elementoLista.findViewById<TextView>(R.id.tvDetalheElementoLista)
+        val tvValor = elementoLista.findViewById<TextView>(R.id.tvValorElementoLista)
+        val tvDataLancto = elementoLista.findViewById<TextView>(R.id.tvDataLanctoElementoLista)
 
-//        if(etValor){
-//
-//        }
+        cursor.moveToPosition(pos)
+
+        tvTipo.text = cursor.getString(DataBaseHandler.TIPO)
+        tvDetalhe.text = cursor.getString(DataBaseHandler.DETALHE)
+        val valor = cursor.getDouble(DataBaseHandler.VALOR)
+        tvValor.text = "R$ %.2f".format(valor)
+        tvDataLancto.text = cursor.getString(DataBaseHandler.DATALANCTO)
+
+
+        if(tvTipo.text == "Débito"){
+            tvTipo.text = "D"
+            tvTipo.setTextColor(Color.parseColor("#ff0000"))
+        }else{
+            tvTipo.text = "C"
+            tvTipo.setTextColor(Color.parseColor("#00ff00"))
+        }
 
         return elementoLista
     }

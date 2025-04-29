@@ -10,7 +10,8 @@ import br.edu.utfpr.walletcontroller.entity.Carteira
 class DataBaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     override fun onCreate(banco: SQLiteDatabase?) {
-        banco?.execSQL("CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (_id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, telefone TEXT)")
+        banco?.execSQL("CREATE TABLE IF NOT EXISTS ${TABLE_NAME} " +
+                "(_id INTEGER PRIMARY KEY AUTOINCREMENT, tipo TEXT, detalhe TEXT, valor FLOAT, datalancto TEXT)")
     }
 
     override fun onUpgrade(banco: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -30,11 +31,32 @@ class DataBaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
     }
 
     fun list() : Cursor {
+        val banco = this.readableDatabase
+
+        return banco.rawQuery("SELECT * FROM carteira ORDER BY datalancto, valor", null)
+
+    }
+
+    fun calcularSaldo():Double{
         val banco = this.writableDatabase
+        var saldo = 0.0
 
-        val registros = banco.query("carteira",null,null, null,null,null,null)
+        val cursor = banco.rawQuery("SELECT tipo, valor FROM carteira", null)
 
-        return registros
+        if(cursor.moveToNext()){
+            do {
+                val tipo = cursor.getString(cursor.getColumnIndexOrThrow("tipo"))
+                val valor = cursor.getString(cursor.getColumnIndexOrThrow("valor"))
+
+                if(tipo == "Crédito"){
+                    saldo = saldo.toDouble() + valor.toDouble()
+                }else{
+                    saldo = saldo.toDouble() - valor.toDouble()
+                }
+            }while (cursor.moveToNext())
+        }
+
+        return saldo
     }
 
     companion object{

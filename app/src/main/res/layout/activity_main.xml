@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="40dp"
+    android:paddingTop="50dp"
     tools:context=".MainActivity">
 
     <TextView
@@ -60,6 +60,7 @@
         android:layout_height="62dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
+        android:inputType="numberDecimal"
         app:layout_constraintStart_toEndOf="@+id/tvValor"
         app:layout_constraintTop_toBottomOf="@+id/spDetalhe" />
 
@@ -89,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Lançar"
+        android:backgroundTint="#0088ff"
         app:layout_constraintStart_toStartOf="@+id/tvDataLancto"
         app:layout_constraintTop_toBottomOf="@+id/dpDataLancto"
         android:onClick="btLancarOnClick"/>
@@ -99,6 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Ver Lançamentos"
+        android:backgroundTint="#0088ff"
         app:layout_constraintStart_toStartOf="@+id/btLancar"
         app:layout_constraintTop_toBottomOf="@+id/btLancar"
         android:onClick="btListarOnClick"/>
@@ -109,6 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Saldo"
+        android:backgroundTint="#0088ff"
         app:layout_constraintStart_toStartOf="@+id/btListar"
         app:layout_constraintTop_toBottomOf="@+id/btListar"
         android:onClick="btSaldoOnClick"/>
