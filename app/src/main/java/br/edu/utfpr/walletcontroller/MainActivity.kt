@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.utfpr.walletcontroller.database.DataBaseHandler
 import br.edu.utfpr.walletcontroller.entity.Carteira
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 

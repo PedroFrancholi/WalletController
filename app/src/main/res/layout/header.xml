@@ -4,28 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp"
-    android:background="#E0E0E0">
+    android:padding="-40dp">
 
     <TextView
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Tipo"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_weight="2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Detalhe"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Valor"
+        android:gravity="center_horizontal"
         android:textStyle="bold" />
 
     <TextView
@@ -33,5 +19,22 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Data"
+        android:gravity="center_horizontal"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Detalhe"
+        android:gravity="center_horizontal"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Valor"
+        android:gravity="center_horizontal"
         android:textStyle="bold" />
 </LinearLayout>

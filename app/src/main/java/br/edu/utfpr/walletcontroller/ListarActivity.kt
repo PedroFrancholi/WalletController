@@ -13,7 +13,7 @@ import br.edu.utfpr.walletcontroller.databinding.ActivityListarBinding
 class ListarActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityListarBinding
-
+    private lateinit var listView: ListView
     private lateinit var banco : DataBaseHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +22,12 @@ class ListarActivity : AppCompatActivity() {
         binding = ActivityListarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        listView = findViewById(R.id.lvPrincipal)
+
         banco = DataBaseHandler(this)
+
+        val header = layoutInflater.inflate(R.layout.header, listView, false)
+        listView.addHeaderView(header) // <- Aqui adiciona o cabeçalho ANTES do adapter!
 
         val registros = banco.list()
 
