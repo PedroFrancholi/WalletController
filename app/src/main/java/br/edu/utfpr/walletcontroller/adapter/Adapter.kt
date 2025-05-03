@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.core.view.ViewCompat
 import br.edu.utfpr.walletcontroller.R
 import br.edu.utfpr.walletcontroller.database.DataBaseHandler
 import br.edu.utfpr.walletcontroller.entity.Carteira
@@ -61,8 +62,10 @@ class Adapter(var context:Context, var cursor: Cursor) : BaseAdapter(){
             tvTipo.setTextColor(Color.parseColor("#ff0000"))
         }else{
             tvTipo.text = "C"
-            tvTipo.setTextColor(Color.parseColor("#00ff00"))
+            tvTipo.setTextColor(Color.parseColor("#00a100"))
         }
+
+        elementoLista.setBackgroundColor(Color.parseColor("#CAD2ED"))
 
         return elementoLista
     }

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="-40dp">
+    android:paddingTop="20dp"
+    >
 
     <TextView
         android:layout_weight="1"
@@ -12,7 +13,8 @@
         android:layout_height="wrap_content"
         android:text="Tipo"
         android:gravity="center_horizontal"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:background="#CAD2ED"/>
 
     <TextView
         android:layout_weight="2"
@@ -20,7 +22,8 @@
         android:layout_height="wrap_content"
         android:text="Data"
         android:gravity="center_horizontal"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:background="#CAD2ED"/>
 
     <TextView
         android:layout_weight="1"
@@ -28,7 +31,8 @@
         android:layout_height="wrap_content"
         android:text="Detalhe"
         android:gravity="center_horizontal"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:background="#CAD2ED"/>
 
     <TextView
         android:layout_weight="2"
@@ -36,5 +40,6 @@
         android:layout_height="wrap_content"
         android:text="Valor"
         android:gravity="center_horizontal"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:background="#CAD2ED"/>
 </LinearLayout>

@@ -11,6 +11,7 @@ import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.utfpr.walletcontroller.database.DataBaseHandler
 import br.edu.utfpr.walletcontroller.entity.Carteira
@@ -85,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         val valor = etValor.text.toString().toDouble()
 
         val dia = dpDataLancto.dayOfMonth
-        val mes = dpDataLancto.month + 1  // Sempre lembrar do +1 no mês!
+        val mes = dpDataLancto.month + 1
         val ano = dpDataLancto.year
 
         val dataLancto = String.format("%02d-%02d-%04d", dia, mes, ano)
@@ -107,6 +108,13 @@ class MainActivity : AppCompatActivity() {
 
     fun btSaldoOnClick(view: View) {
         val saldo = banco.calcularSaldo()
-        Toast.makeText(this, "Saldo atual: R$ %.2f".format(saldo), Toast.LENGTH_LONG).show()
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Saldo")
+        builder.setMessage("Saldo atual: R$ %.2f".format(saldo))
+        builder.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 }
